@@ -1,11 +1,11 @@
 package entity;
 /**
- * 人脸检索候选人
+ * 浜鸿劯妫�绱㈠�欓�変汉
  * @author XinZhi
  *
  */
 public class Candidate {
-	private float confidence;//置信度0-100
+	private float confidence;//缃俊搴�0-100
 	private long face_id;
 	private String tag;
 	private String person_id;

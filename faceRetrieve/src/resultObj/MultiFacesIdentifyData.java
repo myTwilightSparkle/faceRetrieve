@@ -2,23 +2,31 @@ package resultObj;
 
 import java.util.ArrayList;
 
-import entity.Candidate;
+import entity.RectResult;
 
-public class FaceIdentifyData {
-	private ArrayList<Candidate> candidates;
-	private int session_id;
+public class MultiFacesIdentifyData {
+	private ArrayList<RectResult> results;
+	private String session_id;
 	private int time_ms;
 	private int group_size;
 
-	public FaceIdentifyData() {
+	public MultiFacesIdentifyData() {
 		super();
 	}
 
-	public int getSession_id() {
+	public ArrayList<RectResult> getResults() {
+		return results;
+	}
+
+	public void setResults(ArrayList<RectResult> results) {
+		this.results = results;
+	}
+
+	public String getSession_id() {
 		return session_id;
 	}
 
-	public void setSession_id(int session_id) {
+	public void setSession_id(String session_id) {
 		this.session_id = session_id;
 	}
 
@@ -38,17 +46,9 @@ public class FaceIdentifyData {
 		this.group_size = group_size;
 	}
 
-	public ArrayList<Candidate> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(ArrayList<Candidate> candidates) {
-		this.candidates = candidates;
-	}
-
 	@Override
 	public String toString() {
-		return "FaceIdentifyData [candidates=" + candidates + ", session_id=" + session_id + ", time_ms=" + time_ms
+		return "MultiFacesIdentifyData [results=" + results + ", session_id=" + session_id + ", time_ms=" + time_ms
 				+ ", group_size=" + group_size + "]";
 	}
 

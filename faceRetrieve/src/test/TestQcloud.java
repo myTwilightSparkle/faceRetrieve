@@ -16,6 +16,7 @@ import com.qcloud.image.request.FaceAddGroupIdsRequest;
 import com.qcloud.image.request.FaceDelPersonRequest;
 import com.qcloud.image.request.FaceDetectRequest;
 import com.qcloud.image.request.FaceIdentifyRequest;
+import com.qcloud.image.request.FaceMultiIdentifyRequest;
 import com.qcloud.image.request.FaceNewPersonRequest;
 
 public class TestQcloud {
@@ -61,7 +62,7 @@ public class TestQcloud {
 		//url请求方式
 		//String imageUrl = "http://i3.sinaimg.cn/ty/g/2013-11-30/U5244P6T12D6910497F44DT20131130112919.jpg";
 		String imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534480544241&di=99d764b745d26ad1bdc5e841a585e9d7&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Fbmiddle%2F64143be5jw1dmj4ce3ki9j.jpg";
-		int mode = 0;//0譏ｯ�ｿｽ?譛我ｺｺ閼ｸ?�ｿｽ?1譏ｯ�ｿｽ?螟ｧ莠ｺ閼ｸ
+		int mode = 0;//0 检测全部人脸 1 检测最大人脸
 		String result1 = imageClient.faceDetect(new FaceDetectRequest(bucketName, imageUrl, mode));
 		System.out.println(result1);
 		
@@ -97,7 +98,7 @@ public class TestQcloud {
 	}
 	
 	/*
-	 * 添加组
+	 * 设置组
 	 */
 	@Test
 	public void personSetGroup(){
@@ -124,13 +125,24 @@ public class TestQcloud {
 	@Test
 	public void faceIdentify(){
 		// 梅西自己的另一张照片 candidate:messi confidence:100
-		//image = new File("assert/messi2.jpg");
+		image = new File("assert/messi2.jpg");
 		// 伊朗梅西 candidate:messi confidence:96
 		//image = new File("assert/iranmessi.jpg");
 		// 龚恒之 candidate:messi confidence:10
-		image = new File("assert/morte.jpg");
+		// image = new File("assert/morte.jpg");
 		FaceIdentifyRequest faceIdentifyRequest = new FaceIdentifyRequest(bucketName, groupid, image);
 		String result = imageClient.faceIdentify(faceIdentifyRequest);
+		System.out.println("检索结果: "+result);
+	}
+	
+	/*
+	 * 多脸检测
+	 */
+	@Test
+	public void multiFaceIdentify() {
+		image = new File("assert/barcelona.jpg");
+		FaceMultiIdentifyRequest request = new FaceMultiIdentifyRequest(bucketName, image, "customer");
+		String result = imageClient.faceMultiIdentify(request, false);
 		System.out.println("检索结果: "+result);
 	}
 	

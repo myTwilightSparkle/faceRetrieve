@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/dao/QcloudDao.java=UTF-8
+encoding//src/entity/Candidate.java=UTF-8
 encoding//src/test/TestQcloud.java=UTF-8
-encoding//src/util/FaceUtil.java=UTF-8
