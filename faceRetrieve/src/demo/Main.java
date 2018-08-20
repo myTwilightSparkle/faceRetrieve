@@ -8,6 +8,7 @@ import java.util.List;
 
 import biz.CustomerBiz;
 import entity.Person;
+import util.FileUtil;
 
 public class Main {
 
@@ -33,6 +34,10 @@ public class Main {
 				continue;
 			}
 			cb.addComingRecord(comingTime);
+			
+			// 清空assert 把assert下的文件转到assert0
+			FileUtil.clearAssert();
+			
 			try {
 				Thread.sleep(1000 * 3600);// 一小时执行一次
 			} catch (InterruptedException e) {

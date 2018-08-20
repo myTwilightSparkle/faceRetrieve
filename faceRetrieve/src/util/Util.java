@@ -47,7 +47,7 @@ public class Util {
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		File faceimg = new File("new_faces/"+id);
+		File faceimg = new File("new_faces/"+id+".jpg");
 		Iterator<ImageReader> iterator = ImageIO.getImageReadersByFormatName("jpg");
         ImageReader reader = (ImageReader) iterator.next();
 		InputStream in = new FileInputStream(img.getPath());
